@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/tripsite/site.css" />
+</head>
+
+<body>
+    <h1>Howdy, {{username}}</h1>
+    <h1>Add Trip</h1>
+    <form action="/report" method="POST">
+        <input type="text" name="tripTitle" placeholder="Enter Destination" />
+        <input type="date" name="departureDate" placeholder="Departure Date" />
+        <input type="date" name="returnDate" placeholder="Return Date" />
+        <input type="submit" />
+    </form>
+    <h1>Your saved trips:</h1>
+    <ul>
+        {{#tripList}}
+
+        <li>
+            <form action="/delete-trip" method="POST">
+                <h2>{{title}}</h2>
+                <p>{{departure}} - {{return}}</p>
+                <input type="hidden" name=tripName value="{{title}}">
+                <input type="submit" value="Remove">
+            </form>
+        </li>
+
+        {{/tripList}}
+    </ul>
+</body>
+
+</html>
